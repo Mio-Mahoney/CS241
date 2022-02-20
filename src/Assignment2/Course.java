@@ -11,6 +11,8 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLOutput;
 import java.sql.Time;
 import java.util.Scanner;
@@ -21,7 +23,9 @@ abstract class Course {
     String code;            // course code (cs241)
 
     // more variables may be added
-    File file = new File("C:\\Users\\max76\\IdeaProjects\\Cs 241\\src\\Assignment2\\data\\cs241.txt");
+    Path p = Paths.get(System.getProperty("user.dir"),"src","Assignment2", "data", "cs241" + ".txt");
+
+    File file = new File(p.toString());
     Scanner scan = new Scanner(file);
     String[] data = new String[5];
     // complete the class as described in assignment2.pdf
@@ -31,11 +35,14 @@ abstract class Course {
             String line = scan.nextLine();
             data[i] = line.split(":")[1];
         }
-        this.name = data[0];
-        this.crn = data[1];
-        this.code = data[5];
+//        this.name = data[0];
+//        this.crn = data[1];
+//        this.code = data[5];
     }
 
+    public String[] getData() {
+        return data;
+    }
 }
 
 class Section extends Course {

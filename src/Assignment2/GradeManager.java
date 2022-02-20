@@ -7,15 +7,18 @@ package Assignment2;
     ID:
  */
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GradeManager {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter a Course Code: ");
         String courseCode = scan.next();
-
-
+        Course course = new Course() {};
+        for (String item : course.getData()) {
+            System.out.println(item);
+        }
     }
 }
