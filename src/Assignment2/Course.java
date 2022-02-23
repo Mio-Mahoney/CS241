@@ -22,27 +22,37 @@ abstract class Course {
     String crn;             // course crn (e.g., 14607)
     String code;            // course code (cs241)
 
+
+    public void getCode(String code) {
+        this.code = code;
+    }
+    public String[] seeData() {
+        return data;
+    }
+    public String showCourseInfo() {
+        return ("Name: " + data[0] + "  |  CRN: " + data[1] + "  |  Capacity: " + data[2] + "  |  " + "Code: " + data[3] + "  |  " + "Time: " + data[4] + "  |  Number of Secitons: " + data[5]);
+    }
     // more variables may be added
     Path p = Paths.get(System.getProperty("user.dir"),"src","Assignment2", "data", "cs241" + ".txt");
 
     File file = new File(p.toString());
     Scanner scan = new Scanner(file);
-    String[] data = new String[5];
+    String[] data = new String[6];
     // complete the class as described in assignment2.pdf
     Course() throws FileNotFoundException {
         int i = 0;
         while(scan.hasNext()) {
             String line = scan.nextLine();
-            data[i] = line.split(":")[1];
+            data[i] = line.substring(line.indexOf(":")+1);
+            i++;
         }
 //        this.name = data[0];
 //        this.crn = data[1];
 //        this.code = data[5];
     }
 
-    public String[] getData() {
-        return data;
-    }
+
+
 }
 
 class Section extends Course {
@@ -53,9 +63,13 @@ class Section extends Course {
     // more variables may be added
 
     // complete the class as described in assignment2.pdf
-    Section (String[] data, int capacity) throws FileNotFoundException {
-        this.capacity = Integer.getInteger(data[4]);
-        this.curEnrol = Integer.getInteger(data[5]);
-        this.time = Time.valueOf(data[6]);
+
+
+    //Create Student objects
+
+    Section () throws FileNotFoundException {
+//        this.capacity = Integer.getInteger(data[4]);
+//        this.curEnrol = Integer.getInteger(data[5]);
+//        this.time = Time.valueOf(data[6]);
     }
 }

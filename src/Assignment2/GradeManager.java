@@ -16,9 +16,10 @@ public class GradeManager {
 
         System.out.println("Enter a Course Code: ");
         String courseCode = scan.next();
-        Course course = new Course() {};
-        for (String item : course.getData()) {
-            System.out.println(item);
-        }
+        Course course = new Section();
+        course.seeData();
+        System.out.println(course.showCourseInfo());
+
     }
+
 }
